@@ -23,10 +23,11 @@ print("Скорость ветра:", data['wind']['speed'])
 print("Видимость:", data['visibility'])
 print("================================")
 
-#Домашнее задание:
+#Домашнее задание(недельный прогноз с видимостью  и скоростью ветра)
 res = req.get("http://api.openweathermap.org/data/2.5/forecast", params={'q':city, 'units':'metric', 'lang':'ru', 'APPID':appid})
 data = res.json()
 print("Прогноз погоды на неделю:")
 for i in data['list']:
-    print("Дата: <", i['dt_txt'], ">, \r\nСкорость ветра: <", i['wind']['speed'], ">", "\r\nВидимость: <", i['visibility'], ">")
-    print("________________________________")
+    print("Дата: <", i['dt_txt'], "> \r\nТемпература: <", i['main']['temp'], "> \r\nПогодные условия: <",
+          i['weather'][0]['description'], ">", "\r\nСкорость ветра: <", i['wind']['speed'], ">", "\r\nВидимость: <", i['visibility'], ">")
+    print("================================")
